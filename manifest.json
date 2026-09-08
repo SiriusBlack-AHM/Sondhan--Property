@@ -1,0 +1,18 @@
+{
+  "name": "সন্ধান প্রপার্টি - Sondhan Property",
+  "short_name": "সন্ধান",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EBE3DB",
+  "theme_color": "#4B382C",
+  "icons": [
+    {
+      "src": "/i/kPMHn4fQwq-AK3b9.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

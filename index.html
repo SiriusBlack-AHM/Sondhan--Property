@@ -1,0 +1,1722 @@
+<!doctype html>
+<!-- থিসিস: বাংলাদেশের জমি, ফ্ল্যাট, ল্যান্ড শেয়ার ও ডেভেলপার প্রজেক্টের বিশ্বস্ত মার্কেটপ্লেস ও পরিমাপ ক্যালকুলেটর -->
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <title>সন্ধান প্রপার্টি (Sondhan Property) | জমি, ফ্ল্যাট ও ডেভেলপার মার্কেটপ্লেস</title>
+  <meta name="description" content="বাংলাদেশের সবচেয়ে বিশ্বস্ত জমি, ফ্ল্যাট, কমার্শিয়াল ও ডেভেলপার প্রজেক্ট কেনাবেচার প্ল্যাটফর্ম। কাঠা, শতক, বিঘা রূপান্তর ও রেজিস্ট্রেশন খরচ ক্যালকুলেটর সহ।">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4B382C">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="icon" href="/i/kPMHn4fQwq-AK3b9.jpg">
+  <link rel="apple-touch-icon" href="/i/kPMHn4fQwq-AK3b9.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Anek+Bangla:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4B382C;
+      --primary-dark: #24211F;
+      --accent: #CBAD8D;
+      --accent-dark: #9A7650;
+      --accent-tint: #F7F3EF;
+      --ground: #F9F7F5;
+      --surface: #FFFFFF;
+      --surface-muted: #EBE3DB;
+      --border: #DBCFC4;
+      --border-light: #EFE8E1;
+      --ink: #24211F;
+      --ink-muted: #6B625B;
+      --success: #1E6B3F;
+      --success-bg: #E3F2E9;
+      --warning: #925C03;
+      --warning-bg: #FEF3C7;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --radius-lg: 20px;
+      --shadow: 0 8px 24px -6px rgba(36, 33, 31, 0.08);
+      --shadow-lg: 0 16px 36px -8px rgba(36, 33, 31, 0.14);
+      --font-body: 'Hind Siliguri', sans-serif;
+      --font-heading: 'Anek Bangla', 'Hind Siliguri', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--ground);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 15px;
+      overflow-x: hidden;
+      padding-bottom: 74px;
+    }
+    @media (min-width: 992px) {
+      body { padding-bottom: 0; }
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; line-height: 1.3; }
+    button, input, select, textarea { font-family: inherit; color: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .badge-verified { background: var(--success-bg); color: var(--success); }
+    .badge-dev { background: var(--surface-muted); color: var(--primary); border: 1px solid var(--border); }
+    .badge-share { background: var(--warning-bg); color: var(--warning); }
+    .badge-type { background: var(--surface-muted); color: var(--primary); }
+
+    /* Sticky Navbar */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: clamp(1.05rem, 3.5vw, 1.25rem);
+      color: var(--primary);
+      cursor: pointer;
+      font-family: var(--font-heading);
+      white-space: nowrap;
+    }
+    .brand-logo-img {
+      height: 40px;
+      width: auto;
+      max-width: 130px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #FFFFFF;
+      padding: 2px 5px;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .brand-sub {
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--accent-dark);
+      text-transform: uppercase;
+      display: block;
+      margin-top: -2px;
+      font-family: var(--font-body);
+      line-height: 1.1;
+    }
+
+    .desktop-nav {
+      display: none;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-link {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: color 150ms;
+      padding: 8px 6px;
+      border-bottom: 2px solid transparent;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    @media (min-width: 992px) {
+      .desktop-nav { display: flex; }
+    }
+
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 160ms ease;
+      min-height: 44px;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-accent { background: var(--accent); color: var(--primary-dark); font-weight: 700; }
+    .btn-accent:hover { background: var(--accent-dark); color: #fff; }
+    .btn-outline { border-color: var(--border); background: #FFFFFF; color: var(--primary); }
+    .btn-outline:hover { background: var(--surface-muted); }
+    .btn-success { background: var(--success); color: #fff; }
+    .btn-sm { padding: 6px 12px; min-height: 36px; font-size: 13px; }
+
+    /* Hero */
+    .hero-section {
+      padding: 2.5rem 0 2rem;
+      background: linear-gradient(180deg, var(--surface-muted) 0%, var(--ground) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-content { text-align: center; max-width: 860px; margin: 0 auto; }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: clamp(1.85rem, 4.5vw, 2.9rem);
+      color: var(--primary-dark);
+      margin-bottom: 0.75rem;
+    }
+    .hero-title span { color: var(--accent-dark); }
+    .hero-desc {
+      font-size: clamp(14px, 2vw, 16px);
+      color: var(--ink-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Universal Search Card */
+    .search-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+    .search-type-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 8px;
+      overflow-x: auto;
+    }
+    .type-pill {
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--ground);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: 150ms;
+    }
+    .type-pill.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+    .search-form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      text-align: left;
+    }
+    @media (min-width: 600px) {
+      .search-form-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+    }
+    @media (min-width: 992px) {
+      .search-form-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr auto; align-items: end; }
+    }
+    .form-group { display: flex; flex-direction: column; gap: 4px; }
+    .form-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--ink-muted);
+    }
+    .form-control {
+      width: 100%;
+      height: 44px;
+      padding: 0 12px;
+      background: var(--ground);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      outline: none;
+      transition: border-color 150ms;
+    }
+    .form-control:focus { border-color: var(--primary); background: #fff; }
+
+    /* Quick BD City Tags */
+    .quick-locations {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+    .quick-loc-btn {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 150ms;
+    }
+    .quick-loc-btn:hover { background: var(--surface-muted); color: var(--primary); }
+
+    /* Screen Views */
+    .app-screen { display: none; }
+    .app-screen.active { display: block; }
+
+    /* Controls bar */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 2rem 0 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .results-count { font-size: 18px; font-weight: 700; color: var(--primary); font-family: var(--font-heading); }
+
+    /* Grid */
+    .properties-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 640px) {
+      .properties-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .properties-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .prop-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 160ms, box-shadow 160ms;
+    }
+    .prop-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card-media {
+      position: relative;
+      height: 195px;
+      background: var(--surface-muted);
+      overflow: hidden;
+    }
+    .card-media-banner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--surface-muted) 0%, #DBCFC4 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      text-align: center;
+      padding: 1rem;
+    }
+    .card-media-banner svg { opacity: 0.6; margin-bottom: 6px; }
+    .card-badges {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
+      z-index: 2;
+    }
+    .card-price-overlay {
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      background: rgba(36, 33, 31, 0.92);
+      color: #FFFFFF;
+      padding: 3px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .fav-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .fav-btn:focus-visible, .modal-close:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+    .fav-btn.active svg { fill: #9A7650; stroke: #4B382C; }
+
+    .card-body {
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 6px;
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+      font-family: var(--font-heading);
+    }
+    .card-location {
+      font-size: 13px;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .card-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 8px 0;
+      margin: 4px 0;
+      border-top: 1px dashed var(--border);
+      border-bottom: 1px dashed var(--border);
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+    .land-tag-mini {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--surface-muted);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    /* Map Layout Screen */
+    .map-screen-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      height: calc(100vh - 130px);
+      min-height: 580px;
+      background: #E8EDE9;
+    }
+    @media (min-width: 900px) {
+      .map-screen-grid { grid-template-columns: 380px 1fr; }
+    }
+    .map-sidebar {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .map-canvas-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #E4ECE5;
+      overflow: hidden;
+    }
+    #bangladeshMapCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+    .map-toolbar {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .map-pill {
+      background: rgba(255,255,255,0.95);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+    .map-pill.active { background: var(--primary); color: #fff; }
+    .map-info-popup {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: #FFFFFF;
+      padding: 14px 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    /* Converter & Calculator Section */
+    .calc-screen-wrapper {
+      padding: 2.5rem 0 4rem;
+    }
+    .calculator-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 1.5rem;
+    }
+    @media (min-width: 880px) {
+      .calculator-layout { grid-template-columns: 1.1fr 1fr; }
+    }
+    .calc-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    .calc-title {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .calc-subtitle {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-bottom: 1.25rem;
+    }
+    .converter-grid-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-top: 1.25rem;
+    }
+    .unit-card {
+      background: var(--ground);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      transition: all 160ms;
+    }
+    .unit-card.highlight {
+      background: var(--surface-muted);
+      border-color: var(--accent-dark);
+    }
+    .unit-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+    .unit-val {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: 4px;
+      font-family: var(--font-mono);
+      word-break: break-all;
+    }
+    .unit-formula {
+      font-size: 10.5px;
+      color: var(--ink-muted);
+      margin-top: 4px;
+    }
+
+    .calc-result-box {
+      background: var(--surface-muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+    }
+    .result-total {
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--primary);
+    }
+
+    /* Verification Form */
+    .verify-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      max-width: 760px;
+      margin: 1.5rem auto 0;
+      box-shadow: var(--shadow);
+    }
+
+    /* Developer Section */
+    .developer-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: var(--shadow);
+    }
+    .dev-badge-rehab {
+      background: var(--warning-bg);
+      color: var(--warning);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(36, 33, 31, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-sheet {
+      background: var(--surface);
+      width: 100%;
+      max-width: 960px;
+      max-height: 92vh;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 860px) {
+      .detail-grid { grid-template-columns: 1.4fr 1fr; }
+    }
+    .detail-left { padding: 1.5rem; border-right: 1px solid var(--border); }
+    .detail-right { padding: 1.5rem; background: var(--ground); display: flex; flex-direction: column; gap: 16px; }
+
+    .land-data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 13.5px;
+    }
+    .land-data-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .land-data-table td:first-child {
+      color: var(--ink-muted);
+      font-weight: 600;
+      width: 45%;
+    }
+    .land-data-table td:last-child {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* App Install Banner */
+    .pwa-banner {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .pwa-banner-btn {
+      background: var(--accent);
+      color: var(--primary-dark);
+      border: none;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    /* Mobile Bottom Tabbar */
+    .mobile-tabbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+    }
+    @media (min-width: 992px) {
+      .mobile-tabbar { display: none; }
+    }
+    .tab-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      background: transparent;
+      border: none;
+      color: var(--ink-muted);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 6px 8px;
+    }
+    .tab-btn.active { color: var(--primary); font-weight: 700; }
+    .tab-btn svg { width: 22px; height: 22px; }
+
+    /* Toast */
+    .toast-msg {
+      position: fixed;
+      bottom: 78px;
+      right: 20px;
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      z-index: 2000;
+      display: none;
+      box-shadow: var(--shadow-lg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PWA Install Banner on Mobile -->
+  <div id="pwaMobileBanner" class="pwa-banner" style="display:none;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      <span>সন্ধান প্রপার্টি মোবাইল অ্যাপ ইনস্টল করুন</span>
+    </div>
+    <div style="display:flex; gap:8px;">
+      <button class="pwa-banner-btn" onclick="installPWA()">ইনস্টল</button>
+      <button onclick="dismissPWABanner()" style="background:none; border:none; color:#fff; font-size:18px; cursor:pointer;" aria-label="ব্যানার বন্ধ করুন">×</button>
+    </div>
+  </div>
+
+  <!-- Sticky Navbar -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <div class="brand-logo" onclick="switchView('explore')" role="button" tabindex="0" aria-label="সন্ধান প্রপার্টি হোম">
+          <img src="/i/kPMHn4fQwq-AK3b9.jpg" alt="সন্ধান - Sondhan" class="brand-logo-img">
+          <div>
+            সন্ধান প্রপার্টি
+            <span class="brand-sub">BANGLADESH MARKETPLACE</span>
+          </div>
+        </div>
+
+        <nav class="desktop-nav">
+          <button class="nav-link active" id="nav-explore" onclick="switchView('explore')">প্রপার্টি খুঁজুন</button>
+          <button class="nav-link" id="nav-map" onclick="switchView('map')">লাইভ গুগল ম্যাপ</button>
+          <button class="nav-link" id="nav-developers" onclick="switchView('developers')">ডেভেলপার প্রজেক্ট</button>
+          <button class="nav-link" id="nav-calculator" onclick="switchView('calculator')">পরিমাপ ও খরচ ক্যালকুলেটর</button>
+          <button class="nav-link" id="nav-verify" onclick="switchView('verify')">খতিয়ান ও দলিল যাচাই</button>
+        </nav>
+
+        <div class="nav-actions">
+          <button id="pwaInstallBtn" class="btn btn-accent btn-sm" style="display:none;" onclick="installPWA()" aria-label="অ্যাপ ইনস্টল করুন">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            অ্যাপ ইনস্টল
+          </button>
+          <button class="btn btn-outline btn-sm" onclick="switchView('calculator')">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+            কনভার্টার
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="switchView('post')">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            বিজ্ঞাপন দিন
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. EXPLORE & SEARCH SCREEN -->
+  <main id="view-explore" class="app-screen active">
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            ১০০% দাগ, খতিয়ান ও নামজারি যাচাইকৃত জমি
+          </div>
+          <h1 class="hero-title">
+            বাংলাদেশে জমি ও ফ্ল্যাট কেনাবেচার <span>বিশ্বস্ত সন্ধান</span>
+          </h1>
+          <p class="hero-desc">
+            পূর্বাচল, বসুন্ধরা, উত্তরা, মিরপুর, চট্টগ্রাম ও সিলেটের নিষ্কণ্টক জমি, রেডি ফ্ল্যাট ও অনুমোদিত ডেভেলপার প্রজেক্ট।
+          </p>
+
+          <!-- Search Box -->
+          <div class="search-card">
+            <div class="search-type-bar">
+              <button class="type-pill active" onclick="setSearchType('all', this)">সব প্রপার্টি</button>
+              <button class="type-pill" onclick="setSearchType('land', this)">জমি / প্লট</button>
+              <button class="type-pill" onclick="setSearchType('flat', this)">ফ্ল্যাট / অ্যাপার্টমেন্ট</button>
+              <button class="type-pill" onclick="setSearchType('developer', this)">ডেভেলপার প্রজেক্ট</button>
+              <button class="type-pill" onclick="setSearchType('share', this)">ল্যান্ড শেয়ার</button>
+              <button class="type-pill" onclick="setSearchType('commercial', this)">কমার্শিয়াল স্পেস</button>
+            </div>
+
+            <div class="search-form-grid">
+              <div class="form-group">
+                <label class="form-label" for="searchLocation">লোকেশন / এলাকা</label>
+                <select id="searchLocation" class="form-control" onchange="runFilter()">
+                  <option value="all">সমগ্র বাংলাদেশ (সকল এলাকা)</option>
+                  <option value="পূর্বাচল">পূর্বাচল নতুন শহর, ঢাকা</option>
+                  <option value="বসুন্ধরা">বসুন্ধরা আ/এ, ঢাকা</option>
+                  <option value="উত্তরা">উত্তরা (সেক্টর ১-১৮), ঢাকা</option>
+                  <option value="মিরপুর">মিরপুর (ডিওএইচএস/পল্লবী), ঢাকা</option>
+                  <option value="ধানমন্ডি">ধানমন্ডি ও লালমাটিয়া, ঢাকা</option>
+                  <option value="কেরানীগঞ্জ">কেরানীগঞ্জ ও মাওয়া হাইওয়ে</option>
+                  <option value="গাজীপুর">গাজীপুর ও টঙ্গী</option>
+                  <option value="চট্টগ্রাম">চট্টগ্রাম (নাসিরাবাদ/খুলশী)</option>
+                  <option value="সিলেট">সিলেট (উপশহর/শাহজালাল)</option>
+                  <option value="কক্সবাজার">কক্সবাজার মেরিন ড্রাইভ</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="searchBudget">বাজেট (সর্বোচ্চ)</label>
+                <select id="searchBudget" class="form-control" onchange="runFilter()">
+                  <option value="any">যেকোনো বাজেট</option>
+                  <option value="50">৫০ লাখ টাকার মধ্যে</option>
+                  <option value="100">১ কোটি টাকার মধ্যে</option>
+                  <option value="200">২ কোটি টাকার মধ্যে</option>
+                  <option value="500">৫ কোটি টাকার মধ্যে</option>
+                  <option value="1000">১০ কোটি+ পর্যন্ত</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="searchSize">জমির আয়তন / ফ্ল্যাট সাইজ</label>
+                <select id="searchSize" class="form-control" onchange="runFilter()">
+                  <option value="any">যেকোনো সাইজ</option>
+                  <option value="3k">৩ কাঠা পর্যন্ত</option>
+                  <option value="5k">৫ কাঠা পর্যন্ত</option>
+                  <option value="10k">১০ কাঠা+ (বিঘা/একর)</option>
+                  <option value="1200f">১২০০-১৫০০ বর্গফুট ফ্ল্যাট</option>
+                  <option value="2000f">২০০০+ বর্গফুট ফ্ল্যাট</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="searchVerification">কাগজপত্র স্ট্যাটাস</label>
+                <select id="searchVerification" class="form-control" onchange="runFilter()">
+                  <option value="all">সব লিস্টিং</option>
+                  <option value="verified">১০০% ভেরিফাইড (খতিয়ান ও নামজারি)</option>
+                  <option value="rajuk">রাজউক / সিডিএ অনুমোদিত</option>
+                  <option value="mutation">নামজারি ও খাজনা হালনাগাদ</option>
+                </select>
+              </div>
+
+              <button class="btn btn-primary" style="height:44px;" onclick="runFilter()">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                খুঁজুন
+              </button>
+            </div>
+
+            <!-- Quick BD Areas -->
+            <div class="quick-locations">
+              <span style="font-weight:700; font-size:12px; color:var(--ink-muted);">জনপ্রিয় এলাকা:</span>
+              <button class="quick-loc-btn" onclick="quickFilterLoc('পূর্বাচল')">পূর্বাচল সেক্টর ১৭</button>
+              <button class="quick-loc-btn" onclick="quickFilterLoc('বসুন্ধরা')">বসুন্ধরা ব্লক এম</button>
+              <button class="quick-loc-btn" onclick="quickFilterLoc('উত্তরা')">উত্তরা ১৮ নং সেক্টর</button>
+              <button class="quick-loc-btn" onclick="quickFilterLoc('কেরানীগঞ্জ')">মাওয়া এক্সপ্রেসওয়ে প্লট</button>
+              <button class="quick-loc-btn" onclick="quickFilterLoc('চট্টগ্রাম')">চট্টগ্রাম খুলশী</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Properties Grid -->
+    <section class="container" style="padding-top:1.5rem; padding-bottom:3.5rem;">
+      <div class="controls-bar">
+        <div>
+          <span class="results-count" id="resultsCount">৮টি প্রপার্টি পাওয়া গেছে</span>
+          <p style="font-size:12.5px; color:var(--ink-muted);">বাংলাদেশি জমি ও ফ্ল্যাটের যাচাইকৃত ডাটাবেজ</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-outline btn-sm" onclick="switchView('map')">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            ম্যাপে দেখুন
+          </button>
+        </div>
+      </div>
+
+      <div class="properties-grid" id="propertiesContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <!-- 2. LIVE GOOGLE MAP SCREEN -->
+  <main id="view-map" class="app-screen">
+    <div class="map-screen-grid">
+      <div class="map-sidebar">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 style="font-size:1.1rem; color:var(--primary);">ম্যাপে লোকেশন ফিল্টার</h2>
+          <span class="badge badge-dev" id="mapPropCount">৬টি লোকেশন</span>
+        </div>
+        <p style="font-size:12px; color:var(--ink-muted);">ম্যাপের পিন বা নিচের তালিকায় ক্লিক করে প্রপার্টির বিস্তারিত ও গুগল ম্যাপে ডিরেকশন দেখুন।</p>
+
+        <div id="mapSidebarList" style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+          <!-- Map sidebar cards injected -->
+        </div>
+      </div>
+
+      <div class="map-canvas-container">
+        <canvas id="bangladeshMapCanvas"></canvas>
+        <div class="map-toolbar">
+          <button class="map-pill active" onclick="setMapZone('dhaka', this)">ঢাকা রিজিয়ন</button>
+          <button class="map-pill" onclick="setMapZone('ctg', this)">চট্টগ্রাম</button>
+          <button class="map-pill" onclick="setMapZone('sylhet', this)">সিলেট</button>
+          <button class="map-pill" onclick="openLiveGoogleMapAction()">
+            <svg width="12" height="12" style="display:inline; vertical-align:middle; margin-right:4px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            গুগল ম্যাপে লাইভ খুলুন
+          </button>
+        </div>
+
+        <div id="mapInfoPopup" class="map-info-popup" style="display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:start;">
+            <strong id="popupTitle" style="font-size:14px; color:var(--primary);"></strong>
+            <button onclick="closeMapPopup()" style="border:none; background:none; font-size:16px; cursor:pointer;" aria-label="পপআপ বন্ধ করুন">×</button>
+          </div>
+          <p id="popupLoc" style="font-size:12px; color:var(--ink-muted);"></p>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span id="popupPrice" style="font-weight:700; color:var(--accent-dark); font-size:13px;"></span>
+            <button class="btn btn-primary btn-sm" id="popupActionBtn">বিস্তারিত</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 3. CONVERTER & REGISTRATION CALCULATOR SCREEN -->
+  <main id="view-calculator" class="app-screen">
+    <div class="container calc-screen-wrapper">
+      <div style="text-align:center; max-width:760px; margin:0 auto 1.5rem;">
+        <span class="badge badge-dev" style="margin-bottom:8px;">বাংলাদেশের মানসম্মত একক</span>
+        <h1 style="font-size:clamp(1.7rem, 3.5vw, 2.4rem); color:var(--primary);">
+          জমি পরিমাপ কনভার্টার ও রেজিস্ট্রেশন খরচ ক্যালকুলেটর
+        </h1>
+        <p style="font-size:14px; color:var(--ink-muted);">
+          কাঠা, শতক, বিঘা, একর, ছটাক, কানি ও বর্গফুটের নিখুঁত হিসাব এবং জমি/ফ্ল্যাট রেজিস্ট্রেশনের সরকারি ট্যাক্স ও ফি সহজে বের করুন।
+        </p>
+      </div>
+
+      <div class="calculator-layout">
+        <!-- Land Unit Converter -->
+        <div class="calc-box">
+          <h2 class="calc-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            জমির পরিমাপ রূপান্তরকারী (Land Converter)
+          </h2>
+          <p class="calc-subtitle">যেকোনো একটি ঘরে পরিমাণ লিখলে বাকি সব বাংলাদেশি এককে স্বয়ংক্রিয়ভাবে রূপান্তর হবে।</p>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:1rem;">
+            <div class="form-group">
+              <label class="form-label" for="inputUnitAmount">পরিমাণ (Amount)</label>
+              <input type="number" id="inputUnitAmount" class="form-control" value="1" min="0" step="any" oninput="calculateLandUnits()" placeholder="যেমন: ৫">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="selectInputUnit">বর্তমান একক (From Unit)</label>
+              <select id="selectInputUnit" class="form-control" onchange="calculateLandUnits()">
+                <option value="katha" selected>কাঠা (Katha)</option>
+                <option value="shotok">শতাংশ / শতক / ডেসিমাল (Decimal)</option>
+                <option value="bigha">বিঘা (Bigha)</option>
+                <option value="acre">একর (Acre)</option>
+                <option value="sqft">বর্গফুট (Square Feet)</option>
+                <option value="sqm">বর্গমিটার (Square Meter)</option>
+                <option value="chhatak">ছটাক (Chhatak)</option>
+                <option value="kani">কানি (Kani - চট্টগ্রাম/সিলেট)</option>
+                <option value="ganda">গণ্ডা (Ganda)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="converter-grid-results" id="converterResultsGrid">
+            <!-- Results injected live via JS -->
+          </div>
+
+          <div style="margin-top:1.25rem; background:var(--ground); padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--border); font-size:12px; color:var(--ink-muted);">
+            <strong>বাংলাদেশি মানদণ্ড সূত্র:</strong> ১ কাঠা = ৭২০ বর্গফুট = ১.৬৫ শতক | ১ বিঘা = ২০ কাঠা = ৩৩ শতক | ১ একর = ১০০ শতক = ৩ বিঘা ৮ ছটাক | ১ শতক = ৪৩৫.৬ বর্গফুট
+          </div>
+        </div>
+
+        <!-- Property Registration & Tax Calculator -->
+        <div class="calc-box">
+          <h2 class="calc-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            জমি ও ফ্ল্যাট রেজিস্ট্রেশন খরচ ক্যালকুলেটর
+          </h2>
+          <p class="calc-subtitle">দলিল মূল্য অনুযায়ী সরকারি স্ট্যাম্প ডিউটি, গেইন ট্যাক্স ও রেজিস্ট্রেশন ফির হিসাব।</p>
+
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div class="form-group">
+              <label class="form-label" for="regPropertyValue">দলিল মূল্য / সরকারি মৌজা মূল্য (টাকায়)</label>
+              <input type="number" id="regPropertyValue" class="form-control" value="5000000" step="10000" oninput="calculateRegistrationCost()" placeholder="টাকার অংক দিন">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regPropertyArea">এলাকা ক্যাটাগরি</label>
+              <select id="regPropertyArea" class="form-control" onchange="calculateRegistrationCost()">
+                <option value="city_corp">ঢাকা/চট্টগ্রাম সিটি কর্পোরেশন ও ক্যান্টনমেন্ট</option>
+                <option value="paurashava">অন্যান্য পৌরসভা / জেলা সদর এলাকা</option>
+                <option value="union">ইউনিয়ন পরিষদ / গ্রামীণ এলাকা</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regPropertyType">প্রপার্টির ধরন</label>
+              <select id="regPropertyType" class="form-control" onchange="calculateRegistrationCost()">
+                <option value="land">খালি জমি / প্লট হস্তান্তর দলিল</option>
+                <option value="flat">রেডি ফ্ল্যাট / বাণিজ্যিক স্পেস</option>
+                <option value="heba">হেবা দলিল (রক্তের সম্পর্কের দান)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="calc-result-box" id="regResultBox">
+            <div class="result-row">
+              <span>রেজিস্ট্রেশন ফি (১% - ২%):</span>
+              <strong id="feeRegistration">৳৫০,০০০</strong>
+            </div>
+            <div class="result-row">
+              <span>স্ট্যাম্প শুল্ক (Stamp Duty ১.৫%):</span>
+              <strong id="feeStamp">৳৭৫,০০০</strong>
+            </div>
+            <div class="result-row">
+              <span>স্থানীয় সরকার কর (Local Govt ২% - ৩%):</span>
+              <strong id="feeLocal">৳১,০০,০০০</strong>
+            </div>
+            <div class="result-row">
+              <span>উৎস কর / গেইন ট্যাক্স (AIT / Gain Tax):</span>
+              <strong id="feeGain">৳১,৫০,০০০</strong>
+            </div>
+            <div class="result-row">
+              <span>হলফনামা, এন-ফি ও বিবিধ খরচ:</span>
+              <strong id="feeMisc">৳২,৫০০</strong>
+            </div>
+            <div class="result-row result-total">
+              <span>মোট আনুমানিক সরকারি খরচ:</span>
+              <strong id="feeTotal">৳৩,৭৭,৫০০</strong>
+            </div>
+          </div>
+          <p style="font-size:11.5px; color:var(--ink-muted); margin-top:8px;">* সাব-রেজিস্ট্রি অফিসের জোন ও জাতীয় রাজস্ব বোর্ডের (NBR) সার্কুলার ভেদে ফি কিছুটা কম-বেশি হতে পারে।</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 4. DEVELOPERS & PROJECTS SCREEN -->
+  <main id="view-developers" class="app-screen">
+    <div class="container" style="padding-top:2.5rem; padding-bottom:4rem;">
+      <div style="text-align:center; max-width:760px; margin:0 auto 2rem;">
+        <span class="badge badge-dev" style="margin-bottom:8px;">রিহ্যাব ও রাজউক সদস্য</span>
+        <h1 style="font-size:clamp(1.7rem, 3.5vw, 2.4rem); color:var(--primary);">
+          বিশ্বস্ত রিয়েল এস্টেট ডেভেলপার ও ল্যান্ড প্রজেক্ট
+        </h1>
+        <p style="font-size:14px; color:var(--ink-muted);">
+          বাংলাদেশের শীর্ষস্থানীয় ডেভেলপারদের মেগা সিটি, আবাসন প্রকল্প ও ল্যান্ড শেয়ার বুকিং প্ল্যাটফর্ম।
+        </p>
+      </div>
+
+      <div class="properties-grid" id="developersContainer">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </main>
+
+  <!-- 5. VERIFY & KHATIAN SCREEN -->
+  <main id="view-verify" class="app-screen">
+    <div class="container" style="padding-top:2.5rem; padding-bottom:4rem;">
+      <div style="text-align:center; max-width:760px; margin:0 auto 1.5rem;">
+        <span class="badge badge-verified" style="margin-bottom:8px;">১০০% নিষ্কণ্টক সুরক্ষা</span>
+        <h1 style="font-size:clamp(1.7rem, 3.5vw, 2.4rem); color:var(--primary);">
+          জমির খতিয়ান, দাগ ও নামজারি তথ্য যাচাই
+        </h1>
+        <p style="font-size:14px; color:var(--ink-muted);">
+          সিএস, আরএস, এসএ, বিএস খতিয়ান ও ই-পর্চা যাচাইয়ের মাধ্যমে জমির সঠিক মালিকানা নিশ্চিত করুন।
+        </p>
+      </div>
+
+      <div class="verify-box">
+        <form onsubmit="handleVerificationSubmit(event)">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:1rem;">
+            <div class="form-group">
+              <label class="form-label" for="vfDivision">বিভাগ</label>
+              <select id="vfDivision" class="form-control" required>
+                <option value="ঢাকা">ঢাকা</option>
+                <option value="চট্টগ্রাম">চট্টগ্রাম</option>
+                <option value="রাজশাহী">রাজশাহী</option>
+                <option value="সিলেট">সিলেট</option>
+                <option value="খুলনা">খুলনা</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="vfDistrict">জেলা</label>
+              <input type="text" id="vfDistrict" class="form-control" placeholder="যেমন: ঢাকা" required>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:1rem;">
+            <div class="form-group">
+              <label class="form-label" for="vfUpazila">উপজেলা / থানা</label>
+              <input type="text" id="vfUpazila" class="form-control" placeholder="যেমন: রূপগঞ্জ / বাড্ডা" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="vfMouza">মৌজা ও জেএল নম্বর</label>
+              <input type="text" id="vfMouza" class="form-control" placeholder="যেমন: বাউশিয়া, জেএল ১২" required>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:1.5rem;">
+            <div class="form-group">
+              <label class="form-label" for="vfKhatianType">খতিয়ানের ধরন</label>
+              <select id="vfKhatianType" class="form-control">
+                <option value="BS">বিএস (BS)</option>
+                <option value="RS">আরএস (RS)</option>
+                <option value="CS">সিএস (CS)</option>
+                <option value="SA">এসএ (SA)</option>
+                <option value="Namjari">নামজারি (DCR)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="vfKhatianNo">খতিয়ান নম্বর</label>
+              <input type="text" id="vfKhatianNo" class="form-control" placeholder="যেমন: ৪৫৮" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="vfDagNo">দাগ নম্বর</label>
+              <input type="text" id="vfDagNo" class="form-control" placeholder="যেমন: ১২০৪">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%; height:46px;">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            খতিয়ান তথ্য যাচাই করুন
+          </button>
+        </form>
+
+        <div id="verifyResultCard" style="display:none; margin-top:1.5rem; background:var(--ground); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1.25rem;">
+          <div style="display:flex; align-items:center; gap:8px; color:var(--success); font-weight:700; margin-bottom:8px;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>রেকর্ড ম্যাচিং সফল (নমুনা ফলাফল)</span>
+          </div>
+          <table class="land-data-table" id="verifyResultTable">
+            <!-- Injected -->
+          </table>
+          <p style="font-size:12px; color:var(--ink-muted);">অফিসিয়াল সার্টিফাইড কপির জন্য বাংলাদেশ সরকারের ভূমি সেবা পোর্টাল (eporcha.gov.bd / mutation.land.gov.bd) ভিজিট করুন।</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 6. POST PROPERTY SCREEN -->
+  <main id="view-post" class="app-screen">
+    <div class="container" style="padding-top:2.5rem; padding-bottom:4rem;">
+      <div style="text-align:center; max-width:760px; margin:0 auto 1.5rem;">
+        <span class="badge badge-dev" style="margin-bottom:8px;">বিনামূল্যে বিজ্ঞাপন</span>
+        <h1 style="font-size:clamp(1.7rem, 3.5vw, 2.4rem); color:var(--primary);">
+          আপনার জমি বা ফ্ল্যাটের ফ্রি বিজ্ঞাপন দিন
+        </h1>
+        <p style="font-size:14px; color:var(--ink-muted);">
+          সরাসরি প্রকৃত ক্রেতাদের কাছে আপনার প্রপার্টি পৌঁছে দিতে সঠিক তথ্য দিয়ে ফর্মটি পূরণ করুন।
+        </p>
+      </div>
+
+      <div class="verify-box">
+        <form onsubmit="handlePostListing(event)">
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label class="form-label" for="postTitle">প্রপার্টির আকর্ষণীয় শিরোনাম</label>
+            <input type="text" id="postTitle" class="form-control" placeholder="যেমন: পূর্বাচল সেক্টর ১৭-এ ৫ কাঠার দক্ষিণমুখী কর্নার প্লট" required>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:1rem;">
+            <div class="form-group">
+              <label class="form-label" for="postType">প্রপার্টির ধরন</label>
+              <select id="postType" class="form-control">
+                <option value="land">জমি / প্লট (Residential/Commercial Land)</option>
+                <option value="flat">রেডি ফ্ল্যাট / অ্যাপার্টমেন্ট</option>
+                <option value="share">ল্যান্ড শেয়ার প্রকল্প</option>
+                <option value="commercial">বাণিজ্যিক স্পেস / ভবন</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="postLocation">এলাকা ও জেলা</label>
+              <input type="text" id="postLocation" class="form-control" placeholder="যেমন: বসুন্ধরা ব্লক-এল, ঢাকা" required>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:1rem;">
+            <div class="form-group">
+              <label class="form-label" for="postPrice">মোট বিক্রয় মূল্য (টাকায় / লাখ)</label>
+              <input type="text" id="postPrice" class="form-control" placeholder="যেমন: ১ কোটি ২০ লাখ বা ৭৫ লাখ" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="postSize">জমির মাপ / ফ্ল্যাটের আয়তন</label>
+              <input type="text" id="postSize" class="form-control" placeholder="যেমন: ৫ কাঠা অথবা ১৬৫০ বর্গফুট" required>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:1rem;">
+            <div class="form-group">
+              <label class="form-label" for="postMouza">মৌজা ও জেএল</label>
+              <input type="text" id="postMouza" class="form-control" placeholder="যেমন: বাউশিয়া-৭২">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="postKhatian">খতিয়ান ও দাগ নং</label>
+              <input type="text" id="postKhatian" class="form-control" placeholder="যেমন: বিএস ৪২৮, দাগ ১৩০২">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="postRoad">সম্মুখের রাস্তা</label>
+              <input type="text" id="postRoad" class="form-control" placeholder="যেমন: ৪০ ফুট চওড়া রাস্তা">
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label class="form-label" for="postDesc">বিস্তারিত বিবরণ ও বৈশিষ্ট্য</label>
+            <textarea id="postDesc" class="form-control" style="height:90px; padding-top:8px;" placeholder="বিদ্যুৎ, গ্যাস, পানি, বাউন্ডারি ওয়াল, নিষ্কণ্টক নামজারি ইত্যাদির তথ্য লিখুন..."></textarea>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:1.5rem;">
+            <div class="form-group">
+              <label class="form-label" for="postSellerName">মালিক / এজেন্টের নাম</label>
+              <input type="text" id="postSellerName" class="form-control" placeholder="আপনার পুরো নাম" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="postContact">যোগাযোগের মোবাইল বা হোয়াটসঅ্যাপ নম্বর</label>
+              <input type="tel" id="postContact" class="form-control" placeholder="০১XXXXXXXXX" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%; height:46px;">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            লিস্টিং পোস্ট করুন
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- PROPERTY DETAIL MODAL -->
+  <div id="propertyModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
+    <div class="modal-sheet">
+      <button class="modal-close" onclick="closePropertyModal()" aria-label="মডাল বন্ধ করুন">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="detail-grid">
+        <div class="detail-left">
+          <div id="modalBadges" style="display:flex; gap:6px; margin-bottom:8px;"></div>
+          <h2 id="modalTitle" style="font-size:1.4rem; color:var(--primary-dark); margin-bottom:6px;"></h2>
+          <div id="modalLocation" style="font-size:13.5px; color:var(--ink-muted); display:flex; align-items:center; gap:5px; margin-bottom:1rem;"></div>
+
+          <div style="height:240px; background:var(--surface-muted); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; flex-direction:column; border:1px solid var(--border); margin-bottom:1.25rem;">
+            <svg width="48" height="48" fill="none" stroke="var(--primary)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span style="font-size:13px; font-weight:700; color:var(--primary); margin-top:8px;" id="modalMediaTag">প্রপার্টি ফটো ও স্যাটেলাইট ভিউ</span>
+          </div>
+
+          <h3 style="font-size:1.1rem; color:var(--primary); margin-bottom:8px;">জমির খতিয়ান ও আইনি বিবরণ</h3>
+          <table class="land-data-table">
+            <tbody>
+              <tr><td>মৌজা ও জেএল নং:</td><td id="modalMouza">-</td></tr>
+              <tr><td>খতিয়ানের ধরন:</td><td id="modalKhatianType">বিএস ও নামজারি খতিয়ান</td></tr>
+              <tr><td>দাগ নম্বর:</td><td id="modalDag">-</td></tr>
+              <tr><td>নামজারি ও খাজনা:</td><td id="modalMutation">হালনাগাদ পরিশোধিত (নিষ্কণ্টক)</td></tr>
+              <tr><td>সম্মুখের রাস্তা:</td><td id="modalRoad">-</td></tr>
+              <tr><td>অনুমোদন কর্তৃপক্ষ:</td><td id="modalAuthority">রাজউক / জাতীয় গৃহায়ন</td></tr>
+            </tbody>
+          </table>
+
+          <h3 style="font-size:1.1rem; color:var(--primary); margin:1.25rem 0 6px;">বিস্তারিত বিবরণ</h3>
+          <p id="modalDescription" style="font-size:13.5px; color:var(--ink); line-height:1.7;"></p>
+        </div>
+
+        <div class="detail-right">
+          <div>
+            <span style="font-size:12px; font-weight:700; color:var(--ink-muted); text-transform:uppercase;">নির্ধারিত বিক্রয় মূল্য</span>
+            <div id="modalPrice" style="font-size:1.8rem; font-weight:800; color:var(--primary); font-family:var(--font-heading);"></div>
+            <span id="modalPerUnit" style="font-size:12.5px; color:var(--ink-muted);"></span>
+          </div>
+
+          <div style="background:#fff; border:1px solid var(--border); border-radius:var(--radius-sm); padding:1rem;">
+            <div style="font-size:11.5px; font-weight:700; color:var(--ink-muted); text-transform:uppercase; margin-bottom:6px;">ভেরিফাইড বিক্রেতা / প্রতিনিধি</div>
+            <strong id="modalSeller" style="font-size:14px; color:var(--ink); display:block;"></strong>
+            <span style="font-size:12px; color:var(--success); font-weight:600;">✓ এনআইডি ও মালিকানা যাচাইকৃত</span>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <button class="btn btn-success" style="width:100%;" onclick="openWhatsAppChat()">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              হোয়াটসঅ্যাপে বিস্তারিত জানুন
+            </button>
+            <button class="btn btn-outline" style="width:100%;" onclick="openLiveGoogleMapAction()">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+              গুগল ম্যাপে লোকেশন দেখুন
+            </button>
+            <button class="btn btn-primary" style="width:100%;" onclick="switchView('calculator'); closePropertyModal();">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              রেজিস্ট্রেশন খরচ হিসাব করুন
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Tabbar -->
+  <nav class="mobile-tabbar">
+    <button class="tab-btn active" id="tab-explore" onclick="switchView('explore')">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>খুঁজুন</span>
+    </button>
+    <button class="tab-btn" id="tab-map" onclick="switchView('map')">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+      <span>ম্যাপ</span>
+    </button>
+    <button class="tab-btn" id="tab-calculator" onclick="switchView('calculator')">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/></svg>
+      <span>কনভার্টার</span>
+    </button>
+    <button class="tab-btn" id="tab-developers" onclick="switchView('developers')">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M3 7v14M21 7v14M6 3h12v4H6z"/></svg>
+      <span>প্রজেক্ট</span>
+    </button>
+    <button class="tab-btn" id="tab-post" onclick="switchView('post')">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      <span>পোস্ট</span>
+    </button>
+  </nav>
+
+  <!-- Toast Message -->
+  <div id="toastMessage" class="toast-msg"></div>
+
+  <script>
+    // --- Data Storage Safe Wrapper ---
+    const store = (() => {
+      let mem = {};
+      try {
+        localStorage.setItem('__t', '1');
+        localStorage.removeItem('__t');
+        return {
+          get: (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
+          set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+        };
+      } catch {
+        return { get: (k, d) => (k in mem ? mem[k] : d), set: (k, v) => { mem[k] = v; } };
+      }
+    })();
+
+    // --- Sample BD Real Estate Dataset ---
+    const initialProperties = [
+      {
+        id: 'prop-1',
+        title: 'পূর্বাচল নতুন শহর সেক্টর ১৭-এ ৫ কাঠা নিষ্কণ্টক কর্নার প্লট',
+        type: 'land',
+        location: 'পূর্বাচল নতুন শহর, ঢাকা',
+        zone: 'dhaka',
+        price: '৳১ কোটি ২৫ লাখ',
+        priceNum: 12500000,
+        size: '৫ কাঠা (৮.২৫ শতক / ৩৬০০ বর্গফুট)',
+        sizeRaw: '5k',
+        mouza: 'বাউশিয়া (জেএল নং ৭২)',
+        khatian: 'বিএস খতিয়ান নং ৪৭৮, দাগ নং ১২০৯',
+        road: '৬০ ফুট ও ৪০ ফুট ডাবল কর্নার রোড',
+        verified: true,
+        mutation: 'নামজারি ও খাজনা ২০২৩-২৪ হালনাগাদ',
+        authority: 'রাজউক অনুমোদিত সেক্টর ১৭',
+        seller: 'মো: রফিকুল ইসলাম (সরাসরি মালিক)',
+        lat: 23.834, lng: 90.521,
+        desc: 'রাজউকের মূল বরাদ্দপ্রাপ্ত ৫ কাঠার কর্নার প্লট। গ্যাস, বিদ্যুৎ ও ড্রেনেজ লাইন প্রস্তুত। জরুরি ভিত্তিতে হস্তান্তরযোগ্য।'
+      },
+      {
+        id: 'prop-2',
+        title: 'বসুন্ধরা আ/এ ব্লক-এম এ ৪ কাঠা দক্ষিণমুখী আবাসিক প্লট',
+        type: 'land',
+        location: 'বসুন্ধরা আ/এ, ঢাকা',
+        zone: 'dhaka',
+        price: '৳১ কোটি ৮০ লাখ',
+        priceNum: 18000000,
+        size: '৪ কাঠা (৬.৬ শতক)',
+        sizeRaw: '5k',
+        mouza: 'জোয়ার সাহারা (জেএল নং ০৯)',
+        khatian: 'সিটি জরিপ খতিয়ান নং ১৪২২, দাগ নং ৩৪০১',
+        road: '৫০ ফুট প্রশস্ত অ্যাভিনিউ রোড',
+        verified: true,
+        mutation: 'বসুন্ধরা ও রাজউক ক্লিয়ারেন্স সম্পন্ন',
+        authority: 'বসুন্ধরা গ্রুপ ও রাজউক',
+        seller: 'ইঞ্জি: ফারহান চৌধুরী (মালিক)',
+        lat: 23.821, lng: 90.435,
+        desc: 'বসুন্ধরা ব্লক এম-এর ১০০% ভরাটকৃত রেডী প্লট। এখনই বাড়ি বানানোর উপযোগী ও চারপাশ সম্পূর্ণ সুরক্ষিত।'
+      },
+      {
+        id: 'prop-3',
+        title: 'উত্তরা সেক্টর ১৮ তে ১৮৫০ বর্গফুটের বিলাসবহুল রেডি ফ্ল্যাট',
+        type: 'flat',
+        location: 'উত্তরা (সেক্টর ১-১৮), ঢাকা',
+        zone: 'dhaka',
+        price: '৳১ কোটি ১৫ লাখ',
+        priceNum: 11500000,
+        size: '১৮৫০ বর্গফুট (৪ বেড, ৪ বাথ, ৩ বারান্দা)',
+        sizeRaw: '2000f',
+        mouza: 'দিয়াবাড়ী মৌজা',
+        khatian: 'নামজারি ডিএলআর সম্পন্ন',
+        road: 'মেট্রোরেল স্টেশন সংলগ্ন ১০০ ফুট রোড',
+        verified: true,
+        mutation: 'ফ্ল্যাট মিউটেশন ও সাব-কবলা রেজিস্ট্রেশন রেডি',
+        authority: 'রাজউক অনুমোদিত প্ল্যান',
+        seller: 'ক্রিয়েটিভ রিয়েল এস্টেট লিমিটেড',
+        lat: 23.875, lng: 90.380,
+        desc: 'মেট্রোরেল স্টেশন থেকে মাত্র ৩ মিনিট দূরত্বে। লিফট, জেনারেটর, সার্বক্ষণিক নিরাপত্তা ও নিজস্ব কার পার্কিং।'
+      },
+      {
+        id: 'prop-4',
+        title: 'মাওয়া হাইওয়ে সংলগ্ন ২৫ কাঠা কমার্শিয়াল জমি (কেরানীগঞ্জ)',
+        type: 'commercial',
+        location: 'কেরানীগঞ্জ ও মাওয়া হাইওয়ে',
+        zone: 'dhaka',
+        price: '৳৩ কোটি ৫০ লাখ',
+        priceNum: 35000000,
+        size: '২৫ কাঠা (৪১.২৫ শতক / ১.২৫ বিঘা)',
+        sizeRaw: '10k',
+        mouza: 'হাসনাবাদ মৌজা',
+        khatian: 'আরএস ও বিএস খতিয়ান হালনাগাদ',
+        road: 'পদ্মা সেতু সংযোগ এক্সপ্রেসওয়ে ফ্রন্ট',
+        verified: true,
+        mutation: 'বাণিজ্যিক কনভার্শন ও ডিসি অফিস এনওসি রেডি',
+        authority: 'জেলা প্রশাসন ও বিআইডব্লিউটিএ',
+        seller: 'হাজী সোলেমান অ্যান্ড সন্স',
+        lat: 23.670, lng: 90.410,
+        desc: 'পেট্রোল পাম্প, রিসোর্ট, ফ্যাক্টরি বা ওয়্যারহাউজ তৈরির জন্য মাওয়া এক্সপ্রেসওয়ের প্রাইম ফ্রন্ট জমি।'
+      },
+      {
+        id: 'prop-5',
+        title: 'চট্টগ্রাম খুলশী হিলভিউতে ১২ কাঠা প্রিমিয়াম আবাসিক প্লট',
+        type: 'land',
+        location: 'চট্টগ্রাম (নাসিরাবাদ/খুলশী)',
+        zone: 'ctg',
+        price: '৳৪ কোটি ২০ লাখ',
+        priceNum: 42000000,
+        size: '১২ কাঠা (১৯.৮ শতক)',
+        sizeRaw: '10k',
+        mouza: 'খুলশী আবাসিক এলাকা',
+        khatian: 'বিএস ও চট্টগ্রাম জরিপ রেকর্ড',
+        road: '৪০ ফুট পিচঢালা পাহাড়ি ভিউ রোড',
+        verified: true,
+        mutation: 'সিডিএ (CDA) মাস্টারপ্ল্যান অনুমোদিত',
+        authority: 'চট্টগ্রাম উন্নয়ন কর্তৃপক্ষ (CDA)',
+        seller: 'এ কে ট্রেডার্স প্রপার্টিজ',
+        lat: 22.365, lng: 91.810,
+        desc: 'চট্টগ্রাম শহরের সবচেয়ে অভিজাত এলাকায় শতভাগ নিষ্কণ্টক পাহাড়ি ভিউ ডুপ্লেক্স বাড়ির প্লট।'
+      },
+      {
+        id: 'prop-6',
+        title: 'সিলেট শাহজালাল উপশহরে রেডি ল্যান্ড শেয়ার প্রজেক্ট',
+        type: 'share',
+        location: 'সিলেট (উপশহর/শাহজালাল)',
+        zone: 'sylhet',
+        price: '৳১৮ লাখ (প্রতি শেয়ার)',
+        priceNum: 1800000,
+        size: '১৬৫০ বর্গফুট ফ্ল্যাট হিস্যা (ল্যান্ড শেয়ার)',
+        sizeRaw: '1200f',
+        mouza: 'উপশহর ব্লক-ডি',
+        khatian: 'যৌথ ল্যান্ড শেয়ার রেজিস্ট্রেশন',
+        road: '৩০ ফুট আবাসিক রোড',
+        verified: true,
+        mutation: 'হিস্যা অনুযায়ী সাব-কবলা রেজিস্ট্রেশন',
+        authority: 'সিলেট সিটি কর্পোরেশন',
+        seller: 'গ্রিনভিউ ল্যান্ড ডেভেলপমেন্ট ফোরাম',
+        lat: 24.890, lng: 91.880,
+        desc: 'স্বল্প খরচে বিলাসবহুল ফ্ল্যাট তৈরির জন্য সরাসরি জমি কিনে ল্যান্ড শেয়ার ভিত্তিক যৌথ বাড়ি নির্মাণ প্রকল্প।'
+      }
+    ];
+
+    const developerProjects = [
+      {
+        name: 'রূপায়ণ সিটি উত্তরা (Rupayan City Uttara)',
+        badge: 'REHAB ভেরিফাইড',
+        loc: 'উত্তরা সেক্টর ৭ সংলগ্ন, ঢাকা',
+        price: '৳১ কোটি ৪৫ লাখ থেকে শুরু',
+        units: '৩ ও ৪ বেডরুমের প্রিমিয়াম কন্ডোমিনিয়াম',
+        status: 'হস্তান্তর চলছে'
+      },
+      {
+        name: 'নাভানা রিয়েল এস্টেট - পূর্বাচল হেরিটেজ',
+        badge: 'REHAB সদস্য #০২৯',
+        loc: 'পূর্বাচল ৩০০ ফুট এক্সপ্রেসওয়ে, ঢাকা',
+        price: '৳৭০ লাখ থেকে শুরু',
+        units: 'ডুপ্লেক্স ভিলেজ ও আবাসিক অ্যাপার্টমেন্ট',
+        status: 'বুকিং চলমান'
+      },
+      {
+        name: 'সানমার প্যালেস হাইটস - চট্টগ্রাম',
+        badge: 'CDA অনুমোদিত',
+        loc: 'জিইসি মোড়, নাসিরাবাদ, চট্টগ্রাম',
+        price: '৳২ কোটি ১০ লাখ থেকে শুরু',
+        units: 'লাক্সারি সুইট ও পেন্টহাউজ',
+        status: 'নির্মাণাধীন (৭৫% সম্পন্ন)'
+      }
+    ];
+
+    let currentProperties = store.get('sp_properties', initialProperties);
+    let selectedFilterType = 'all';
+    let activeModalProperty = null;
+
+    // --- Navigation Switcher ---
+    function switchView(viewName) {
+      document.querySelectorAll('.app-screen').forEach(el => el.classList.remove('active'));
+      const target = document.getElementById('view-' + viewName);
+      if (target) target.classList.add('active');
+
+      document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+      const activeNav = document.getElementById('nav-' + viewName);
+      if (activeNav) activeNav.classList.add('active');
+
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      const activeTab = document.getElementById('tab-' + viewName);
+      if (activeTab) activeTab.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (viewName === 'map') {
+        setTimeout(initBangladeshMap, 100);
+      }
+    }
+
+    // --- Land Unit Converter Logic (100% Functional BD Units) ---
+    // Standard BD Conversion Constants in Square Feet (Sq Ft):
+    const SQFT_CONSTANTS = {
+      sqft: 1,
+      sqm: 10.7639104,          // 1 Sq M = ~10.764 sq ft
+      chhatak: 45,              // 1 Chhatak = 45 sq ft
+      shotok: 435.6,            // 1 Shotok / Decimal = 435.6 sq ft
+      katha: 720,               // 1 Katha = 720 sq ft = 1.6528 shotok
+      ganda: 871.2,             // 1 Ganda (Standard) = 2 shotok = 871.2 sq ft
+      bigha: 14400,             // 1 Bigha = 20 Katha = 33 Shotok = 14,400 sq ft
+      kani: 17424,              // 1 Kani (Ctg/Sylhet standard 40 shotok) = 17,424 sq ft
+      acre: 43560               // 1 Acre = 100 Shotok = 60.5 Katha = 3 Bigha 8 Chhatak = 43,560 sq ft
+    };
+
+    function calculateLandUnits() {
+      const amount = parseFloat(document.getElementById('inputUnitAmount').value);
+      const fromUnit = document.getElementById('selectInputUnit').value;
+      const resultsContainer = document.getElementById('converterResultsGrid');
+
+      if (isNaN(amount) || amount <= 0) {
+        resultsContainer.innerHTML = '<div style="grid-column:1/-1; color:var(--ink-muted); text-align:center; padding:1.5rem;">অনুগ্রহ করে সঠিক পরিমাণ লিখুন।</div>';
+        return;
+      }
+
+      // Convert input to square feet first
+      const totalSqFt = amount * SQFT_CONSTANTS[fromUnit];
+
+      const unitsData = [
+        { key: 'katha', label: 'কাঠা (Katha)', factor: SQFT_CONSTANTS.katha, formula: '১ কাঠা = ৭২০ বর্গফুট' },
+        { key: 'shotok', label: 'শতাংশ / শতক (Decimal)', factor: SQFT_CONSTANTS.shotok, formula: '১ শতক = ৪৩৫.৬ বর্গফুট' },
+        { key: 'bigha', label: 'বিঘা (Bigha)', factor: SQFT_CONSTANTS.bigha, formula: '১ বিঘা = ২০ কাঠা / ৩৩ শতক' },
+        { key: 'acre', label: 'একর (Acre)', factor: SQFT_CONSTANTS.acre, formula: '১ একর = ১০০ শতক / ৬০.৫ কাঠা' },
+        { key: 'sqft', label: 'বর্গফুট (Sq. Feet)', factor: SQFT_CONSTANTS.sqft, formula: 'দৈর্ঘ্য × প্রস্থ (ফুট)' },
+        { key: 'sqm', label: 'বর্গমিটার (Sq. Meter)', factor: SQFT_CONSTANTS.sqm, formula: '১ বর্গমি. = ১০.৭৬৪ বর্গফুট' },
+        { key: 'chhatak', label: 'ছটাক (Chhatak)', factor: SQFT_CONSTANTS.chhatak, formula: '১৬ ছটাক = ১ কাঠা (৪৫ ফু.)' },
+        { key: 'kani', label: 'কানি (Kani)', factor: SQFT_CONSTANTS.kani, formula: '৪০ শতক = ১ কানি (সিলেট/চট্ট.)' },
+        { key: 'ganda', label: 'গণ্ডা (Ganda)', factor: SQFT_CONSTANTS.ganda, formula: '৪ কড়া = ১ গণ্ডা (২ শতক)' }
+      ];
+
+      resultsContainer.innerHTML = unitsData.map(u => {
+        const converted = totalSqFt / u.factor;
+        let formattedVal;
+        if (converted >= 1000) {
+          formattedVal = converted.toLocaleString('en-US', { maximumFractionDigits: 2 });
+        } else if (converted >= 1) {
+          formattedVal = converted.toFixed(3).replace(/\.?0+$/, '');
+        } else {
+          formattedVal = converted.toFixed(4).replace(/\.?0+$/, '');
+        }
+
+        const isCurrent = u.key === fromUnit;
+        return `
+          <div class="unit-card ${isCurrent ? 'highlight' : ''}">
+            <span class="unit-label">${u.label}</span>
+            <span class="unit-val">${formattedVal}</span>
+            <span class="unit-formula">${u.formula}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // --- Property Registration Cost & Tax Calculator ---
+    function calculateRegistrationCost() {
+      const price = parseFloat(document.getElementById('regPropertyValue').value) || 0;
+      const area = document.getElementById('regPropertyArea').value;
+      const type = document.getElementById('regPropertyType').value;
+
+      let regRate = 0.01;      // 1%
+      let stampRate = 0.015;   // 1.5%
+      let localRate = 0.02;    // 2%
+      let gainRate = 0.04;     // 4%
+
+      if (area === 'city_corp') {
+        localRate = 0.03;      // 3% in Dhaka/Ctg City Corp
+        gainRate = 0.08;       // 8% in prime City Corp
+      } else if (area === 'paurashava') {
+        localRate = 0.02;
+        gainRate = 0.04;
+      } else {
+        localRate = 0.01;
+        gainRate = 0.02;
+      }
+
+      if (type === 'heba') {
+        regRate = 0.005;
+        stampRate = 0.005;
+        localRate = 0;
+        gainRate = 0;
+      }
+
+      const feeReg = Math.round(price * regRate);
+      const feeStamp = Math.round(price * stampRate);
+      const feeLocal = Math.round(price * localRate);
+      const feeGain = Math.round(price * gainRate);
+      const feeMisc = type === 'heba' ? 1200 : 2500;
+      const total = feeReg + feeStamp + feeLocal + feeGain + feeMisc;
+
+      document.getElementById('feeRegistration').innerText = '৳' + feeReg.toLocaleString('en-IN');
+      document.getElementById('feeStamp').innerText = '৳' + feeStamp.toLocaleString('en-IN');
+      document.getElementById('feeLocal').innerText = '৳' + feeLocal.toLocaleString('en-IN');
+      document.getElementById('feeGain').innerText = '৳' + feeGain.toLocaleString('en-IN');
+      document.getElementById('feeMisc').innerText = '৳' + feeMisc.toLocaleString('en-IN');
+      document.getElementById('feeTotal').innerText = '৳' + total.toLocaleString('en-IN');
+    }
+
+    // --- Render Properties ---
+    function renderProperties(list) {
+      const container = document.getElementById('propertiesContainer');
+      const countEl = document.getElementById('resultsCount');
+      if (countEl) countEl.innerText = `${list.length}টি প্রপার্টি পাওয়া গেছে`;
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column:1/-1;
